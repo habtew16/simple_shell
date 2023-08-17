@@ -1,10 +1,12 @@
 #include "shell.h"
+
 /**
- *add_node_end - append node to list pointed
- *@head: pointer to pointer
- *@directory_path: string to initialize new node
- *Return: new or NULL
+ * add_node_end - Adds a new node at the end of the list.
+ * @head: Pointer to the head of the list.
+ * @directory_path: String to be added to the new node.
  */
+
+
 void add_node_end(directory_list **head, const char *directory_path)
 {
 	directory_list *last = *head;

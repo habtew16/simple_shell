@@ -29,7 +29,7 @@ int main(int argc, char **argv, char **env)
 		if (line_len == 0 || (line_len == 1 && input_line[0] == '\0'))
 			continue;
 		count++;
-		special_case_result = special_case(input_line, line_len, &exit_st);
+		special_case_result = handle_cases(input_line, line_len, &exit_st);
 		if (special_case_result == 3)
 		{
 			if (isatty(STDIN_FILENO) == 1)
@@ -38,9 +38,9 @@ int main(int argc, char **argv, char **env)
 		}
 		commands = split_line(input_line);
 		if (_strcmp("exit", *commands) == 0)
-			built_exit(input_line, commands, &exit_st, count);
+			builtin_exit(input_line, commands, &exit_st, count);
 		else if (_strcmp("env", *commands) == 0)
-		built_env(commands, env, &exit_st);
+			builtin_env(commands, env, &exit_st);
 		else
 			execute_line(argv, commands, count, env, &exit_st, input_line);
 		fflush(stdout);

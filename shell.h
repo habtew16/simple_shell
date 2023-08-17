@@ -27,19 +27,22 @@ typedef struct directory_node
 	struct directory_node *next;
 } directory_list;
 
+
+int _is_positive(char *com);
+int _atoi(char *s);
 void execute_line(char **argv, char **commands,
 		int count, char **env, int *exit_st, char *line);
 char **split_line(char *line);
 directory_list *list_path(char **env);
 int _setenv(const char *name, const char *value, int overwrite);
 char *_which(char **commands, char **env);
-void built_exit(char *line, char **arg, int *exit_st,
+void builtin_exit(char *line, char **arg, int *exit_st,
 		int count __attribute__((unused)));
-void built_env(char **arg, char **env, int *exit_st);
+void builtin_env(char **arg, char **env, int *exit_st);
 char *_getenv(const char *name, char **env);
 void _error(char **argv, char *first,
 		int count __attribute__((unused)), int **exit_st);
-int special_case(char *line, ssize_t line_len, int *exit_st);
+int handle_cases(char *line, ssize_t len, int *exit_st);
 void add_node_end(directory_list **head, const char *directory_path);
 void print_num(int count);
 int _strlen(char *s);

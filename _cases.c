@@ -1,22 +1,23 @@
 #include "shell.h"
 
 /**
-*special_case - function that handle special cases such as:
-*EOF in interactive and non-interactive mode and \n entry
-*@line: buffer that stores the stdin input
-*@line_len: line length
-*@exit_st: exit status
-*Return: 0 if the entry does not match any special case
-*or 3 if it is a \n
+ * handle_cases - function to hanndle spetial cases like
+ * EOF in interactive and non-interactive mode and \n entry
+ * @line:strinng which contiainns standard input
+ * @len: lenngth of the buffer of linne
+ * @exit_st: exit status
+ * Return: if the entry does not match any special case
+ * expressed above then return 0 or else
+ * if it is a match then return 3\n
 */
 
 
 
-int special_case(char *line, ssize_t line_len, int *exit_st)
+int handle_cases(char *line, ssize_t len, int *exit_st)
 {
 	int i = 0;
 
-	if (line_len == -1)
+	if (len == -1)
 	{
 		if (isatty(STDIN_FILENO))
 		{
