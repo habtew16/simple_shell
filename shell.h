@@ -28,6 +28,7 @@ typedef struct directory_node
 } directory_list;
 
 
+int is_whitespace(char *str);
 int _is_positive(char *com);
 int _atoi(char *s);
 void execute_line(char **argv, char **commands,

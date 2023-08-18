@@ -26,7 +26,7 @@ int main(int argc, char **argv, char **env)
 		line_len = getline(&input_line, &bufsize, stdin);
 		if (line_len > 0 && input_line[line_len - 1] == '\n')
 			input_line[line_len - 1] = '\0';
-		if (line_len == 0 || (line_len == 1 && input_line[0] == '\0'))
+		if (line_len == 0 || is_whitespace(input_line))
 			continue;
 		count++;
 		special_case_result = handle_cases(input_line, line_len, &exit_st);

@@ -1,4 +1,5 @@
 #include "shell.h"
+#include <ctype.h>
 
 /**
  * _is_positive - function to check if passed strinng
@@ -60,5 +61,26 @@ int _atoi(char *s)
 	}
 
 	return (sign * result);
+}
+
+/**
+ * is_whitespace - function to check if input command
+ * is just white space
+ * @str: command from input line
+ * Return: 1 if false and 0 if true
+ */
+
+
+int is_whitespace(char *str)
+{
+	while (*str)
+	{
+		if (!isspace(*str))
+		{
+			return (0);
+		}
+		str++;
+	}
+	return (1);
 }
 
