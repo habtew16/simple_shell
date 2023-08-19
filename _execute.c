@@ -20,7 +20,6 @@ void execute_line(char **argv, char **commands, int count,
 	char *full_path = NULL;
 
 	(void)line;
-
 	pid = fork();
 	if (pid < 0)
 	{
@@ -30,22 +29,25 @@ void execute_line(char **argv, char **commands, int count,
 
 	if (pid == 0)
 	{
-		full_path = commands[0];
-
-		if (**commands != '/' && _strcmp(commands[0], "..") != 0)
+		if (_strcmp(commands[0], "ls") == 0)
 		{
-			full_path = _which(commands, env);
+			execvp("ls", commands);
+			perror("ls");
+			exit(127);
 		}
-
-		if (full_path && access(full_path, X_OK) == 0)
+		else
 		{
-			execve(full_path, commands, env);
-		}
 
-		_error(argv, commands[0], count, &exit_st);
-		free_loop(commands);
-		free(line);
-		exit(*exit_st);
+			full_path = commands[0];
+			if (**commands != '/' && _strcmp(commands[0], "..") != 0)
+				full_path = _which(commands, env);
+			if (full_path && access(full_path, X_OK) == 0)
+				execve(full_path, commands, env);
+			_error(argv, commands[0], count, &exit_st);
+			free_loop(commands);
+			free(line);
+			exit(*exit_st);
+		}
 	}
 	else
 	{
