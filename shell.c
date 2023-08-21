@@ -15,7 +15,7 @@ int main(int argc, char **argv, char **env)
 
 	char *input_line = NULL;
 	size_t bufsize = 0;
-	ssize_t line_len = 0, count = 0;
+	ssize_t _len = 0, count = 0;
 	int exit_st = 0;
 
 	(void)argc;
@@ -23,13 +23,13 @@ int main(int argc, char **argv, char **env)
 		if (isatty(STDIN_FILENO) == 1)
 			write(1, "($) ", 4);
 		signal(SIGINT, SIG_IGN);
-		line_len = getline(&input_line, &bufsize, stdin);
-		if (line_len > 0 && input_line[line_len - 1] == '\n')
-			input_line[line_len - 1] = '\0';
-		if (line_len == 0 || is_whitespace(input_line))
+		_len = getline(&input_line, &bufsize, stdin);
+		if (_len > 0 && input_line[_len - 1] == '\n')
+			input_line[_len - 1] = '\0';
+		if (_len == 0 || is_whitespace(input_line))
 			continue;
 		count++;
-		special_case_result = handle_cases(input_line, line_len, &exit_st);
+		special_case_result = handle_cases(input_line, _len, &exit_st);
 		if (special_case_result == 3)
 		{
 			if (isatty(STDIN_FILENO) == 1)
@@ -42,7 +42,7 @@ int main(int argc, char **argv, char **env)
 		else if (_strcmp("env", *commands) == 0)
 			builtin_env(commands, env, &exit_st);
 		else
-			execute_line(argv, commands, count, env, &exit_st, input_line);
+			_execute(argv, commands, count, env, &exit_st, input_line);
 		fflush(stdout);
 
 	} while (1);

@@ -14,12 +14,12 @@
 #define del " \t\r\n\v\a"
 
 /**
-* struct directory_node - singly linked list
-* @directory_path: string - (malloc'ed string)
-* @next: points to the next node
-*
-* Description: singly linked list node structure
-* for directories of PATH
+* struct directory_node - directory node linked
+* list (singly)
+* @directory_path: collection of characters
+* or string that contains path
+* @next: is pointer that contains address of
+* next path
 */
 typedef struct directory_node
 {
@@ -31,7 +31,7 @@ typedef struct directory_node
 int is_whitespace(char *str);
 int _is_positive(char *com);
 int _atoi(char *s);
-void execute_line(char **argv, char **commands,
+void _execute(char **argv, char **commands,
 		int count, char **env, int *exit_st, char *line);
 char **split_line(char *line);
 directory_list *list_path(char **env);
@@ -42,7 +42,7 @@ void builtin_exit(char *line, char **arg, int *exit_st,
 void builtin_env(char **arg, char **env, int *exit_st);
 char *_getenv(const char *name, char **env);
 void _error(char **argv, char *first,
-		int count __attribute__((unused)), int **exit_st);
+		int count __attribute__((unused)), int **exit_status);
 int handle_cases(char *line, ssize_t len, int *exit_st);
 void add_node_end(directory_list **head, const char *directory_path);
 void print_num(int count);

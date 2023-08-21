@@ -1,7 +1,9 @@
 #include "shell.h"
 /**
-* free_loop - Frees a double pointer array of pointers
-* @arr: Double pointer array of pointers
+* free_loop - function used to free doubly
+* linked list set by directory_node
+* @arr: pointer array that contains
+* the address of another pointer
 */
 void free_loop(char **arr)
 {
@@ -20,8 +22,8 @@ void free_loop(char **arr)
 
 
 /**
-* free_list - Frees a linked list of directories
-* @head: Head of the linked list
+* free_list - function to Free a linked list of directories
+* @head: is the head of the directory_list
 */
 
 

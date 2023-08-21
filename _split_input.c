@@ -8,32 +8,32 @@
 */
 char **split_line(char *line)
 {
-	int j = 0;
+	int i, len;
 	char *token;
-	char *token_hash;
-	char **word_arr;
-	int len;
+	char *_hash;
+	char **words;
 
+	i = 0;
 	len = _strlen(line);
 
-	word_arr = malloc(sizeof(char *) * (len + 1));
-	if (word_arr == NULL)
+	words = malloc(sizeof(char *) * (len + 1));
+	if (words == NULL)
 		return (NULL);
-	token_hash = strtok(line, "#");
-	token = strtok(token_hash, del);
+	_hash = strtok(line, "#");
+	token = strtok(_hash, del);
 	while (token != NULL)
 	{
-		word_arr[j] = malloc(_strlen(token) + 1);
-		if (word_arr[j] == NULL)
+		words[i] = malloc(_strlen(token) + 1);
+		if (words[i] == NULL)
 		{
-			free_loop(word_arr);
+			free_loop(words);
 			return (NULL);
 		}
-		_strncpy(word_arr[j], token, _strlen(token) + 1);
+		_strncpy(words[i], token, _strlen(token) + 1);
 		token = strtok(NULL, del);
-		j++;
+		i++;
 	}
-	word_arr[j] = NULL;
-	return (word_arr);
+	words[i] = NULL;
+	return (words);
 }
 

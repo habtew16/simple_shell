@@ -24,9 +24,10 @@ void add_node_end(directory_list **head, const char *directory_path)
 		*head = new;
 }
 /**
- *list_path - function that builds a linked list of the PATH directories
- *@env: environment variables
- *Return: the head of the list
+ * list_path - is function to build linked list
+ * path of the direcotries
+ * @env: collection of env variables
+ * Return: head node of the list
  */
 
 directory_list *list_path(char **env)

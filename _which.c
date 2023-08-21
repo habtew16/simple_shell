@@ -1,9 +1,13 @@
 #include "shell.h"
 /**
-*_which - fuction that looks for files in the current PATH.
-*@commands:the split arguments
-*@env: environment variables.
-*Return: full_path of the command or NULL if it can´t find it
+ * _which - is a function used to look for
+ * files in the current path of the given
+ * direcotry
+ * @commands:user input arguments
+ * @env:the environment variable which contains
+ * direcotry files
+ * Return: returns full path of command passed
+ * or (NULL) if the comand passed doesn't exist
 */
 
 char *_which(char **commands, char **env)

@@ -12,7 +12,7 @@
 * from user
 */
 
-void execute_line(char **argv, char **commands, int count,
+void _execute(char **argv, char **commands, int count,
 	char **env, int *exit_st, char *line)
 {
 	pid_t pid;

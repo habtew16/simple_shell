@@ -43,12 +43,12 @@ void print_num(int count)
 *_error - writes an error message similar to the sh error
 *when command not found
 *@argv: the argv from the main function
-*@first: first command to print if not found
+*@fi: first command to print if not found
 *@count: the number of times you have done a command
-*@exit_st: exit status
+*@exit_status: exit status
 */
-void _error(char **argv, char *first,
-		int count __attribute__((unused)), int **exit_st)
+void _error(char **argv, char *fi,
+		int count __attribute__((unused)), int **exit_status)
 {
 	struct stat st;
 
@@ -56,19 +56,19 @@ void _error(char **argv, char *first,
 	write(STDERR_FILENO, ": ", 2);
 	print_num(count);
 	write(STDERR_FILENO, ": ", 2);
-	write(STDERR_FILENO, first, _strlen(first));
+	write(STDERR_FILENO, fi, _strlen(fi));
 	write(STDERR_FILENO, ": ", 2);
 
-	if (stat(first, &st) == 0 && S_ISDIR(st.st_mode))
+	if (stat(fi, &st) == 0 && S_ISDIR(st.st_mode))
 	{
-		**exit_st = 126;
-		if (_strcmp(first, "..") == 0)
-			**exit_st = 127;
+		**exit_status = 126;
+		if (_strcmp(fi, "..") == 0)
+			**exit_status = 127;
 		perror("");
 	}
 	else
 	{
-		**exit_st = 127;
+		**exit_status = 127;
 		write(STDERR_FILENO, "not found\n", 10);
 	}
 }
