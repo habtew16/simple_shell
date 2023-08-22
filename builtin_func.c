@@ -3,6 +3,26 @@
 #include <string.h>
 
 /**
+ * handle_illegal_number - function to print error
+ * message when there is illegal number
+ * @count: count of the input command
+ * @commands: splited commands from user
+ * @exit_st: exit status code
+ */
+
+void handle_illegal_number(int count, char **commands, int *exit_st)
+{
+	write(STDOUT_FILENO, "./hsh: ", 7);
+	write(STDOUT_FILENO, "1: ", 3);
+	write(STDOUT_FILENO, "exit: Illegal number: ", 22);
+	write(STDOUT_FILENO, commands[1], strlen(commands[1]));
+	write(STDOUT_FILENO, "\n", 1);
+	*exit_status = 2;
+	free_loop(commands);
+}
+
+
+/**
  * builtin_exit - is function used to implement built
  * in exit with status code
  * @input_line: input line that contains commands
@@ -28,13 +48,7 @@ void builtin_exit(char *input_line, char **commands, int *exit_status,
 		}
 		else
 		{
-			write(STDOUT_FILENO, "./hsh: ", 7);
-			write(STDOUT_FILENO, "1: ", 3);
-			write(STDOUT_FILENO, "exit: Illegal number: ", 22);
-			write(STDOUT_FILENO, commands[1], strlen(commands[1]));
-			write(STDOUT_FILENO, "\n", 1);
-			*exit_status = 2;
-			free_loop(commands);
+			handle_illegal_number(count, commands, exit_st);
 			return;
 		}
 	}

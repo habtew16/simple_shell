@@ -40,6 +40,25 @@ void print_num(int count)
 
 
 /**
+ * print_error_msg - function that prints error
+ * messafe
+ * @argv: commands given in list
+ * @fi: is first command in argument that is
+ * going to be printed if no erro
+ * @count: counnnt of the args
+*/
+
+void print_error_msg(char **argv, char *fi, int count)
+{
+	write(STDERR_FILENO, argv[0], _strlen(argv[0]));
+	write(STDERR_FILENO, ": ", 2);
+	print_num(count);
+	write(STDERR_FILENO, ": ", 2);
+	write(STDERR_FILENO, fi, _strlen(fi));
+	write(STDERR_FILENO, ": ", 2);
+}
+
+/**
  * _error - function used to write custom error
  * message when command not found
  * @argv: list of arguments from ain function
@@ -50,19 +69,12 @@ void print_num(int count)
  * @exit_status: status code for exit
 */
 
-
-
 void _error(char **argv, char *fi,
 		int count __attribute__((unused)), int **exit_status)
 {
 	struct stat st;
 
-	write(STDERR_FILENO, argv[0], _strlen(argv[0]));
-	write(STDERR_FILENO, ": ", 2);
-	print_num(count);
-	write(STDERR_FILENO, ": ", 2);
-	write(STDERR_FILENO, fi, _strlen(fi));
-	write(STDERR_FILENO, ": ", 2);
+	print_error_msg(argv, fi, count);
 
 	if (stat(fi, &st) == 0 && S_ISDIR(st.st_mode))
 	{
