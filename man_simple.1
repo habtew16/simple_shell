@@ -1,0 +1,45 @@
+.TH SIMPLE-SHELL 1 "August 2023" "Simple Shell Project Manual"
+
+.SH NAME
+simple-shell \- A basic shell implementation in C
+
+.SH SYNOPSIS
+.B simple-shell
+[options]
+
+.SH DESCRIPTION
+The
+.B simple-shell
+is a simple command-line interpreter implemented in C that allows users to execute commands and interact with their system.
+
+.SH OPTIONS
+.TP
+None
+
+.SH USAGE
+Run the compiled executable:
+.BR ./simple-shell
+
+You will be greeted with a shell prompt where you can enter commands and interact with the shell.
+
+.SH COMMANDS
+The shell supports standard Unix commands as well as some built-in functions:
+.PP
+Run external commands: ls, echo, etc.
+.PP
+Built-in commands: exit, env
+
+.SH BUILT-IN FUNCTIONS
+The shell provides several built-in functions:
+.TP
+.B exit
+Terminates the shell.
+.TP
+.B env
+Displays the current environment variables.
+
+.SH AUTHOR
+This manual page was written by [Habtamu Gebre && Sophia Odioko].
+
+.SH REPORTING BUGS
+Report bugs to [habtamuwolde96@gmailc.com or odiokosophia@gmail.com].
