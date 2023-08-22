@@ -3,42 +3,45 @@
 #include <string.h>
 
 /**
- * builtin_exit - function that implement the exit builtin
- * @line: the buffer
- * @commands: the split arguments
- * @exit_st: the exit status
- * @count: count of lines
+ * builtin_exit - is function used to implement built
+ * in exit with status code
+ * @input_line: input line that contains commands
+ * @commands: splited commands from input line
+ * @exit_status: is the exit status code
+ * @count: total count of input lines
 */
 
 
-void builtin_exit(char *line, char **commands, int *exit_st,
+void builtin_exit(char *input_line, char **commands, int *exit_status,
 		int count __attribute__((unused)))
 {
-	int num = 0;
+	int num_value;
+
+	num_value = 0;
 
 	if (commands[1])
 	{
 		if (_is_positive(commands[1]) == 0)
 		{
-			num = _atoi(commands[1]);
-			*exit_st = num;
+			num_value = _atoi(commands[1]);
+			*exit_status = num_value;
 		}
 		else
 		{
 			write(STDOUT_FILENO, "./hsh: ", 7);
-			write(STDOUT_FILENO, ": ", 2);
+			write(STDOUT_FILENO, "1: ", 3);
 			write(STDOUT_FILENO, "exit: Illegal number: ", 22);
 			write(STDOUT_FILENO, commands[1], strlen(commands[1]));
 			write(STDOUT_FILENO, "\n", 1);
-			*exit_st = 2;
+			*exit_status = 2;
 			free_loop(commands);
 			return;
 		}
 	}
 
 	free_loop(commands);
-	free(line);
-	exit(*exit_st);
+	free(input_line);
+	exit(*exit_status);
 }
 
 

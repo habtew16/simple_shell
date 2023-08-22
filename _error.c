@@ -40,13 +40,18 @@ void print_num(int count)
 
 
 /**
-*_error - writes an error message similar to the sh error
-*when command not found
-*@argv: the argv from the main function
-*@fi: first command to print if not found
-*@count: the number of times you have done a command
-*@exit_status: exit status
+ * _error - function used to write custom error
+ * message when command not found
+ * @argv: list of arguments from ain function
+ * which are commands
+ * @fi: is first command to be printed
+ * if no error found
+ * @count: count of commands done
+ * @exit_status: status code for exit
 */
+
+
+
 void _error(char **argv, char *fi,
 		int count __attribute__((unused)), int **exit_status)
 {

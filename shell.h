@@ -37,7 +37,7 @@ char **split_line(char *line);
 directory_list *list_path(char **env);
 int _setenv(const char *name, const char *value, int overwrite);
 char *_which(char **commands, char **env);
-void builtin_exit(char *line, char **arg, int *exit_st,
+void builtin_exit(char *input_line, char **arg, int *exit_status,
 		int count __attribute__((unused)));
 void builtin_env(char **arg, char **env, int *exit_st);
 char *_getenv(const char *name, char **env);
