@@ -1,9 +1,11 @@
 #include "shell.h"
 
 /**
-*_werror - puts a char to the std error
-*@c: character to write
-*Return: int to print
+ * _werror - function used to print character
+ * to standard error
+ * @c: char to be printed in standard error
+ * Return: return 1 if success
+ * -1 if fails
 */
 int _werror(char c)
 {
@@ -26,8 +28,8 @@ void print_num_recursive(int num)
 }
 
 /**
- * print_num - function that print a num with function write
- * @count: the number of times you have done a command
+ * print_num - function to print number
+ * @count: count of given command done how many times
  */
 
 void print_num(int count)

@@ -1,11 +1,20 @@
 #include "shell.h"
+
 /**
-*split_line - creates a double pointer array that holders pointers
-*to each string from the command line
-*@line: buffer that stores the stdin input
-*Return: double pointer array of pointers that are commands to interpret
-*and execute
+ * split_line - Splits the input line into individual command strings.
+ *
+ * This function takes an input line and tokenizes it into an array of
+ * command strings, where each command is a separate element in the array.
+ *
+ * @line: The input buffer containing the command line.
+ *
+ * Return: A double pointer array containing pointers to individual
+ * command strings extracted from the input line.
+ *
 */
+
+
+
 char **split_line(char *line)
 {
 	int i, len;
