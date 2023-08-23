@@ -45,7 +45,7 @@ char *build_full_path(directory_list *head, char *command)
 char *_which(char **commands, char **env)
 {
 	directory_list *head = list_path(env);
-	char *full_path = build_full_path(head, commands[0])
+	char *full_path = build_full_path(head, commands[0]);
 
 	free_list(list_path(env));
 	return (full_path);

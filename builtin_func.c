@@ -7,13 +7,14 @@
  * message when there is illegal number
  * @count: count of the input command
  * @commands: splited commands from user
- * @exit_st: exit status code
+ * @exit_status: exit status code
  */
 
-void handle_illegal_number(int count, char **commands, int *exit_st)
+void handle_illegal_number(int count, char **commands, int *exit_status)
 {
 	write(STDOUT_FILENO, "./hsh: ", 7);
 	write(STDOUT_FILENO, "1: ", 3);
+	print_num(count);
 	write(STDOUT_FILENO, "exit: Illegal number: ", 22);
 	write(STDOUT_FILENO, commands[1], strlen(commands[1]));
 	write(STDOUT_FILENO, "\n", 1);
@@ -48,7 +49,7 @@ void builtin_exit(char *input_line, char **commands, int *exit_status,
 		}
 		else
 		{
-			handle_illegal_number(count, commands, exit_st);
+			handle_illegal_number(count, commands, exit_status);
 			return;
 		}
 	}
